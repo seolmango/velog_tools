@@ -28,6 +28,7 @@
 }
 
 * { box-sizing: border-box; }
+[hidden] { display: none !important; }
 
 html, body { margin: 0; }
 
@@ -221,4 +222,97 @@ kbd {
   padding: 20px 0;
   color: var(--text-muted);
   font-size: 0.85rem;
+}
+
+/* ---------- 도구 공통 ---------- */
+
+.stack { display: flex; flex-direction: column; gap: 16px; }
+.stack[hidden], .dropzone[hidden] { display: none; }
+
+.dropzone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 240px;
+  padding: 24px;
+  border: 2px dashed var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--text-muted);
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+.dropzone:hover,
+.dropzone:focus-visible,
+body.dragging .dropzone {
+  border-color: var(--accent);
+  outline: none;
+}
+.dropzone svg { width: 40px; height: 40px; margin-bottom: 8px; }
+.dropzone strong { color: var(--text); font-weight: 600; }
+.dropzone span { font-size: 0.88rem; }
+.dropzone.compact { min-height: 0; flex-direction: row; padding: 14px; gap: 8px; }
+.dropzone.compact svg { width: 20px; height: 20px; margin: 0; }
+
+.options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 24px;
+}
+.panel > .options:not(:first-child) { margin-top: 16px; }
+.option-grow { flex: 1; min-width: 160px; }
+.muted { color: var(--text-muted); font-weight: 400; }
+
+/* 벨로그 본문 미리보기 (본문 폭 768px 그대로) */
+.velog-preview {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: #ffffff;
+}
+.velog-preview.dark { background: #121212; }
+.velog-preview-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 8px 12px;
+  border-bottom: 1px solid #f1f3f5;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #868e96;
+}
+.velog-preview.dark .velog-preview-bar { border-bottom-color: #2a2a2a; color: #acacac; }
+.velog-preview .segmented { border-color: #dee2e6; }
+.velog-preview .segmented button { color: #868e96; }
+.velog-preview .segmented button + button { border-left-color: #dee2e6; }
+.velog-preview .segmented button[aria-pressed="true"] { background: #f1f3f5; color: #212529; }
+.velog-preview.dark .segmented,
+.velog-preview.dark .segmented button + button { border-color: #4d4d4d; }
+.velog-preview.dark .segmented button { color: #acacac; }
+.velog-preview.dark .segmented button[aria-pressed="true"] { background: #2e2e2e; color: #ececec; }
+.velog-preview .page { max-width: 768px; margin: 0 auto; padding: 24px 16px; line-height: 0; }
+.velog-preview canvas { display: block; max-width: 100%; height: auto; }
+.meta { margin: 0; font-size: 0.8rem; color: var(--text-muted); text-align: center; }
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+.hint { margin-left: auto; font-size: 0.82rem; color: var(--text-muted); }
+@media (max-width: 560px) { .hint { display: none; } }
+
+input[type="color"] {
+  width: 36px;
+  height: 32px;
+  padding: 2px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  cursor: pointer;
 }

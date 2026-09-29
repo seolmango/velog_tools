@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>표 변환 · velog tools</title>
+  <meta name="description" content="엑셀 · 구글 시트 · CSV를 마크다운 표로 바꿈">
+  <script src="../../assets/theme.js"></script>
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="stylesheet" href="table.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a class="logo" href="../../">velog<span>.</span>tools</a>
+      <button class="icon-btn theme-toggle" type="button" aria-label="테마 전환" title="테마 전환">
+        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <h1>표 변환</h1>
+      <p class="subtitle">벨로그 에디터엔 표 만드는 기능이 없음. 엑셀 · 구글 시트에서 셀 복사해서 붙여넣으면 마크다운 표로 바꿔줌.</p>
+
+      <div class="stack">
+        <div class="panel">
+          <label class="field-label" for="input">원본 <span class="muted">엑셀 · 구글 시트 · CSV</span></label>
+          <textarea id="input" rows="7" placeholder="셀을 복사해서 여기에 붙여넣기" spellcheck="false"></textarea>
+
+          <div class="options">
+            <div class="option">
+              <span class="field-label">첫 줄</span>
+              <div class="segmented" data-option="header">
+                <button type="button" data-value="yes">제목 행</button>
+                <button type="button" data-value="no">일반 행</button>
+              </div>
+            </div>
+            <div class="option">
+              <span class="field-label">정렬</span>
+              <div class="segmented" data-option="align">
+                <button type="button" data-value="none">기본</button>
+                <button type="button" data-value="left">왼쪽</button>
+                <button type="button" data-value="center">가운데</button>
+                <button type="button" data-value="right">오른쪽</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="result" class="stack" hidden>
+          <div class="panel">
+            <label class="field-label" for="output">마크다운</label>
+            <textarea id="output" rows="7" readonly spellcheck="false"></textarea>
+          </div>
+
+          <div class="table-preview" id="preview"></div>
+
+          <div class="actions">
+            <button id="copy-btn" class="btn primary" type="button">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              마크다운 복사
+            </button>
+            <span class="hint"><kbd>Ctrl</kbd> + <kbd>Enter</kbd> 로도 복사 가능</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="../../assets/common.js"></script>
+  <script src="table.js"></script>
+</body>
+</html>

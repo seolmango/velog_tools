@@ -1,0 +1,22 @@
+.swatches { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.swatch {
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  cursor: pointer;
+}
+.swatch[aria-pressed="true"] { box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--accent); }
+.swatches input[type="color"] { width: 28px; height: 28px; border-radius: 50%; padding: 0; overflow: hidden; }
+
+.bg-image-row { display: flex; gap: 6px; }
+.bg-image-row .btn { font-weight: 500; }
+
+.thumb-preview canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  box-shadow: 0 0 0 1px var(--border);
+}

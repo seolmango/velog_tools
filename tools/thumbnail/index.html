@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>썸네일 만들기 · velog tools</title>
+  <meta name="description" content="벨로그 카드 비율에 맞는 글 썸네일을 만듦">
+  <script src="../../assets/theme.js"></script>
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="stylesheet" href="thumbnail.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a class="logo" href="../../">velog<span>.</span>tools</a>
+      <button class="icon-btn theme-toggle" type="button" aria-label="테마 전환" title="테마 전환">
+        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <h1>썸네일 만들기</h1>
+      <p class="subtitle">벨로그 카드 비율(1.91:1)에 맞춘 1200×628 썸네일임. 잘리는 부분 없이 그대로 보임.</p>
+
+      <div class="stack">
+        <div class="panel">
+          <label class="field-label" for="title">제목</label>
+          <textarea id="title" rows="2" placeholder="글 제목"></textarea>
+
+          <div class="options">
+            <div class="option option-grow">
+              <label class="field-label" for="subtitle">부제 · 시리즈명 <span class="muted">(선택)</span></label>
+              <input id="subtitle" type="text" placeholder="예: React 톺아보기 #3">
+            </div>
+          </div>
+
+          <div class="options">
+            <div class="option">
+              <span class="field-label">배경</span>
+              <div class="swatches" id="swatches">
+                <input id="color" type="color" title="직접 고르기" aria-label="배경색 직접 고르기">
+              </div>
+            </div>
+            <div class="option">
+              <span class="field-label">배경 이미지 <span class="muted">(선택)</span></span>
+              <div class="bg-image-row">
+                <label class="btn" id="bg-pick">
+                  <input id="file-input" type="file" accept="image/*" hidden>
+                  <span id="bg-label">이미지 선택 · 붙여넣기</span>
+                </label>
+                <button id="bg-clear" class="btn" type="button" hidden>빼기</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="options">
+            <div class="option">
+              <span class="field-label">정렬</span>
+              <div class="segmented" data-option="align">
+                <button type="button" data-value="left">왼쪽</button>
+                <button type="button" data-value="center">가운데</button>
+              </div>
+            </div>
+            <div class="option option-grow">
+              <label class="field-label" for="size">글자 크기 <span id="size-value" class="muted"></span></label>
+              <input id="size" type="range" min="60" max="140" step="5">
+            </div>
+          </div>
+        </div>
+
+        <div class="thumb-preview">
+          <canvas id="canvas" width="1200" height="628"></canvas>
+        </div>
+
+        <div class="actions">
+          <button id="download-btn" class="btn primary" type="button">다운로드</button>
+          <button id="copy-btn" class="btn" type="button">이미지 복사</button>
+          <span class="hint">벨로그 썸네일은 파일 업로드만 돼서 다운로드 추천</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="../../assets/common.js"></script>
+  <script src="thumbnail.js"></script>
+</body>
+</html>
